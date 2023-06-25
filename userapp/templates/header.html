@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Header{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}">
+</head>
+<body>
+    {% block header %}
+    <div id="header">
+        <div id="logo">Le grand Apparels</div>
+        <div id="action_center">
+            <div class="action_button">
+                <a href="{% url 'cart' %}">Cart</a>
+            </div>
+            <div class="action_button">
+                <a href="{% url 'logout' %}">Log Out</a>
+            </div>        
+        </div>
+    </div> 
+    {% endblock %}
+    {% block maincontent %}{% endblock %}
+    {% block footer %}
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById("current-year").textContent = new Date().getFullYear();
+    </script>
+    {% endblock %}
+</body>
+</html>

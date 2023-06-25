@@ -1,0 +1,36 @@
+{% extends 'header.html' %}
+
+{% block title%}Cart{% endblock %}
+
+{% block maincontent %}
+<div>
+    <div>
+        <a href="{% url 'home' %}">Continue Shopping</a>
+    </div>
+    {% for product_details in products_details %}
+        <div class="product_section">
+            <div class="image_section">
+                <img src="{{ product_details.product.Product_Image.url }}" alt="{{ product_details.product.Product_Name }} image" width="200px" height="200px">
+            </div>
+            <div class="details_section">
+                <div>
+                    <h4>{{ product_details.product.Product_Name }}</h4>
+                    <p>Ksh {{ product_details.product.Product_Price }}</p>
+                </div>
+                <div class="cart_actions">
+                    <a href="{% url 'decrease_quantity' product_details.order_ID %}">
+                        <div class="quantity_action">-</div>
+                    </a>
+                    <div class="quantity">{{ product_details.quantity }}</div>
+                    <a href="{% url 'increase_quantity' product_details.order_ID %}">
+                        <div class="quantity_action">+</div>
+                    </a>
+                </div>
+                <a href="{% url 'remove' product_details.order_ID %}">
+                    <div class="remove_button">Remove</div>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

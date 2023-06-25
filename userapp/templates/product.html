@@ -1,0 +1,27 @@
+{% extends 'header.html' %}
+
+{% block title %}
+    {{ product_details.Product_Name }}
+{% endblock %}
+
+{% block maincontent %}
+<div class="content_wrapper">
+    <div class="image_area">
+        <img src="{{ product_details.Product_Image.url }}" alt="{{ product_details.Product_Name }} image" class="image">
+    </div>
+    <div class="product_details">
+        <h4>{{ product_details.Product_Name }}</h4>
+        <p>{{ product_details.Product_Description }}</p>
+        <p>Ksh {{ product_details.Product_Price }}</p>
+        <a href="{% url 'add_to_cart' product_details.id %}">
+            <div class="cart_button">Add To Cart</div>
+        </a>
+    </div>
+</div>
+<div class="back_button_area">
+    <a href="{% url 'home' %}">
+        <div class="back_button">Continue Shopping</div>
+    </a>
+</div>
+{% endblock %}
+

@@ -1,0 +1,7 @@
+{% if login %}
+    {{ message }}
+    <a href="https://www.google.com">Login</a>
+{% else %}
+    {{ message }}
+    <a href="{% url 'signup' %}">Sign Up</a>
+{% endif %}
